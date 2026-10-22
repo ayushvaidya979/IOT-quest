@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00101f" />
+    <title>Component Journey Quest — IoT Quest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./module.css" />
+  </head>
+  <body class="journey-page-body">
+    <!-- Moving Sky & Doodle Canvas Background -->
+    <div class="sky-doodle-bg" aria-hidden="true">
+      <div class="notebook-grid"></div>
+      <div class="sky-floating-clouds">
+        <div class="sky-cloud cloud-1"></div>
+        <div class="sky-cloud cloud-2"></div>
+        <div class="sky-cloud cloud-3"></div>
+      </div>
+      <div class="doodle-bg-decors" id="bgDecors"></div>
+    </div>
+
+    <!-- Realistic Volumetric Cloud Ascension Transition Curtain Overlay -->
+    <div class="cloud-transition-overlay" id="cloudTransition" aria-hidden="true">
+      <!-- SVG Turbulence & Displacement for Organic Cloud Edge Softness -->
+      <svg class="cloud-svg-filter" width="0" height="0">
+        <filter id="cloudSoftFilter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="35" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </svg>
+
+      <!-- Atmospheric Mist Rising Veil -->
+      <div class="cloud-mist-screen"></div>
+
+      <!-- Volumetric Deep Cloud Cluster (Rising Upwards) -->
+      <div class="cloud-ascent-chamber">
+        <!-- Distant deep storm / nimbus layer -->
+        <div class="cloud-stratum stratum-distant">
+          <div class="cumulus-bank cb1"></div>
+          <div class="cumulus-bank cb2"></div>
+          <div class="cumulus-bank cb3"></div>
+        </div>
+        <!-- Mid-altitude volumetric cumulus layer -->
+        <div class="cloud-stratum stratum-mid">
+          <div class="cumulus-bank cb4"></div>
+          <div class="cumulus-bank cb5"></div>
+          <div class="cumulus-bank cb6"></div>
+          <div class="cumulus-bank cb7"></div>
+        </div>
+        <!-- Foreground fluffy billowy white cloud banks -->
+        <div class="cloud-stratum stratum-fore">
+          <div class="cumulus-bank cb8"></div>
+          <div class="cumulus-bank cb9"></div>
+          <div class="cumulus-bank cb10"></div>
+          <div class="cumulus-bank cb11"></div>
+          <div class="cumulus-bank cb12"></div>
+        </div>
+      </div>
+
+      <!-- Futuristic Flight Altimeter HUD Overlay -->
+      <div class="cloud-flight-hud" id="cloudTransitionText">
+        <div class="flight-hud-frame">
+          <div class="flight-hud-scanner"></div>
+          <div class="flight-rocket-float">🚀</div>
+          <div class="flight-hud-title">ALTITUDE ASCENSION IN PROGRESS</div>
+          <div class="flight-step">CLIMBING INTO HIGHER STRATOSPHERE...</div>
+          <div class="flight-hud-telemetry">
+            <span>THRUST: 100%</span>
+            <span class="hud-blink">SIGNAL: LOCKED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="quest-nav-bar">
+      <div class="nav-inner">
+        <a class="back-home-btn" href="./index.html" id="backHomeLink">
+          <span class="pixel-arrow">◀</span>
+          <span>RETURN TO MAP</span>
+        </a>
+        <div class="quest-module-header">
+          <span class="header-badge" id="moduleTag">MODULE QUEST</span>
+          <h1 class="header-title" id="moduleHeadingName">ESP32 ADVENTURE</h1>
+        </div>
+        <div class="header-status">
+          <div class="altitude-meter">
+            <small>ALTITUDE</small>
+            <b id="altitudeDisplay">STEP 1 OF 5</b>
+          </div>
+          <a class="hub-pill" href="./index.html#modules">ALL MODULES</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Journey Container -->
+    <main class="quest-stage-container">
+      <!-- 5-Step Journey Stepper Progression Bar -->
+      <nav class="journey-stepper-tracker" aria-label="Journey Steps">
+        <div class="stepper-progress-line" id="stepperLine"></div>
+        <ol class="stepper-items" id="stepperItems">
+          <!-- Dynamically populated 5 steps -->
+        </ol>
+      </nav>
+
+      <!-- Doodle Journey Showcase Card -->
+      <section class="doodle-showcase-card" id="journeyShowcaseCard">
+        <!-- Paper tape & pin doodles -->
+        <div class="washi-tape tape-tl" aria-hidden="true"></div>
+        <div class="washi-tape tape-tr" aria-hidden="true"></div>
+
+        <div class="card-inner-grid">
+          <!-- Left Column: Story, Hand-drawn Notes & Specs -->
+          <div class="doodle-content-panel">
+            <div class="step-badge-pill" id="stepBadge">STEP 01 • INITIATION</div>
+            <h2 class="step-title" id="stepTitle">Meet Your Companion</h2>
+            <p class="step-subtitle" id="stepSubtitle">The Microcontroller Superhero</p>
+
+            <div class="doodle-notebook-card">
+              <div class="notebook-pin" aria-hidden="true">📌</div>
+              <p class="step-desc" id="stepDesc">Loading explanation...</p>
+            </div>
+
+            <!-- Hand-drawn Bullet Points / Key Takeaways -->
+            <div class="doodle-takeaways">
+              <span class="takeaways-label">DOODLE SCHEMATIC NOTES:</span>
+              <ul class="takeaways-list" id="takeawaysList">
+                <!-- Bullet points inserted here -->
+              </ul>
+            </div>
+
+            <!-- Interactive Fun Fact Sticky Note -->
+            <div class="doodle-sticky-note" id="stickyNote">
+              <div class="sticky-tape" aria-hidden="true"></div>
+              <div class="sticky-header">💡 PRO TIP FOR MAKERS</div>
+              <p class="sticky-body" id="stickyBody">Tip loading...</p>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Handcrafted Component Doodle -->
+          <div class="doodle-visual-panel">
+            <div class="sketchbook-frame">
+              <div class="frame-tag" id="doodleLabel">SCHEMATIC DOODLE</div>
+              <div class="doodle-canvas-wrapper" id="doodleCanvasWrapper">
+                <!-- SVG Doodle Graphic injected here -->
+              </div>
+              <div class="doodle-annotations" id="doodleAnnotations">
+                <!-- Hand-drawn pointer notes -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step Navigation Controls -->
+        <footer class="step-navigation-bar">
+          <button type="button" class="journey-nav-btn prev-btn" id="prevStepBtn" disabled>
+            <span>←</span> PREVIOUS STEP
+          </button>
+          
+          <div class="progress-pill-counter">
+            <span class="cloud-indicator">☁️</span>
+            <span id="stepCounterText">STEP 1 / 5</span>
+          </div>
+
+          <button type="button" class="journey-nav-btn next-btn" id="nextStepBtn">
+            <span>NEXT STEP</span>
+            <span class="btn-cloud-spark">☁️ ➔</span>
+          </button>
+        </footer>
+      </section>
+
+      <!-- Quick Switcher Bar to other components -->
+      <aside class="quick-module-bar">
+        <span class="quick-bar-label">SWITCH COMPONENT:</span>
+        <div class="quick-module-pills" id="quickModulePills"></div>
+      </aside>
+    </main>
+
+    <!-- Completion Celebration Modal -->
+    <dialog class="completion-dialog" id="completionDialog">
+      <div class="dialog-content">
+        <div class="dialog-confetti" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="trophy-doodle">🏆</div>
+        <p class="dialog-kicker">QUEST COMPLETED • SKILL MASTERED!</p>
+        <h2 class="dialog-title" id="completeTitle">ESP32 Mastered!</h2>
+        <p class="dialog-desc" id="completeDesc">
+          You've climbed through all 5 cloud checkpoints and mastered the schematics and code of this component!
+        </p>
+        <div class="badge-display-box" id="completeBadgeBox">
+          <span class="badge-icon">🎖️</span>
+          <div>
+            <b id="completeBadgeName">Circuit Scout Badge</b>
+            <small id="completeXp">+150 XP EARNED</small>
+          </div>
+        </div>
+        <div class="dialog-actions">
+          <button type="button" class="journey-nav-btn quiz-launch-btn" id="startQuizBtn">
+            📝 TAKE 10-QUESTION QUIZ
+          </button>
+          <button type="button" class="journey-nav-btn prev-btn" id="replayQuestBtn">
+            🔄 REPLAY QUEST
+          </button>
+          <a href="./index.html#modules" class="journey-nav-btn next-btn" id="returnMapBtn">
+            RETURN TO MAP ➔
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- 10-Question Module Component Quiz Dialog -->
+    <dialog class="quiz-modal-dialog" id="moduleQuizDialog">
+      <div class="quiz-modal-content">
+        <button type="button" class="quiz-close-btn" id="closeQuizModalBtn" aria-label="Close Quiz">✕</button>
+        
+        <!-- Screen 1: Active 10-Question Quiz -->
+        <div class="quiz-active-screen" id="quizActiveScreen">
+          <div class="quiz-header-row">
+            <div class="quiz-meta-info">
+              <span class="quiz-badge" id="quizModuleBadge">MODULE 01 CHECKPOINT QUIZ</span>
+              <h2 class="quiz-main-title" id="quizMainTitle">Component Mastery Quiz</h2>
+            </div>
+            <div class="quiz-progress-badge">
+              <span class="q-meter-label">QUESTION</span>
+              <b class="q-meter-num" id="quizQuestionNum">01 / 10</b>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="quiz-bar-track">
+            <div class="quiz-bar-fill" id="quizProgressBar"></div>
+          </div>
+
+          <!-- Question Card -->
+          <div class="quiz-question-box">
+            <div class="quiz-question-text" id="quizQuestionText">Loading question...</div>
+          </div>
+
+          <!-- 4 Options -->
+          <div class="quiz-options-grid" id="quizOptionsGrid">
+            <!-- Dynamically populated buttons -->
+          </div>
+
+          <!-- Feedback notification after answering -->
+          <div class="quiz-feedback-box" id="quizFeedbackBox" hidden>
+            <div class="feedback-icon" id="feedbackIcon">💡</div>
+            <div class="feedback-copy">
+              <strong id="feedbackHeading">Correct!</strong>
+              <p id="feedbackExplain">Explanation will appear here.</p>
+            </div>
+            <button type="button" class="journey-nav-btn next-btn quiz-continue-btn" id="quizContinueBtn">
+              NEXT QUESTION ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- Screen 2: Quiz Results & Score Summary -->
+        <div class="quiz-results-screen" id="quizResultsScreen" hidden>
+          <div class="results-celebrate-icon" id="resultsIcon">🎉</div>
+          <span class="results-kicker">QUIZ COMPLETE • PERFORMANCE REPORT</span>
+          <h2 class="results-title" id="resultsTitle">Outstanding Work!</h2>
+          <p class="results-desc" id="resultsDesc">Here is how you scored on the 10 module questions:</p>
+
+          <div class="score-card-banner">
+            <div class="score-circle-display">
+              <span class="score-big" id="resultsScoreDisplay">10</span>
+              <small class="score-total">/ 10</small>
+            </div>
+            <div class="score-details-text">
+              <div class="score-rank-title" id="resultsRankTitle">Silicon Master</div>
+              <p class="score-status-sub" id="resultsScoreSummary">You answered 10 out of 10 questions correctly.</p>
+              <div class="score-xp-award" id="resultsXpAward">⚡ +200 BONUS XP GRANTED!</div>
+            </div>
+          </div>
+
+          <div class="quiz-result-actions">
+            <button type="button" class="journey-nav-btn prev-btn" id="retakeQuizBtn">
+              🔄 RETAKE QUIZ
+            </button>
+            <a href="./index.html#modules" class="journey-nav-btn next-btn">
+              RETURN TO MAP ➔
+            </a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./module-data.js"></script>
+    <script src="./module-quizzes.js"></script>
+    <script src="./module.js"></script>
+  </body>
+</html>
